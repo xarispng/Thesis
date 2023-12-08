@@ -1,0 +1,148 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/main.min.css" rel="stylesheet">
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <section class="vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 text-black">
+                    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+                        messages %} {% for category, message in messages %} {% if category ==
+                        'error' %}
+                        <div class="alert alert-danger alter-dismissable fade show text-center" role="alert">
+                          {{ message }}
+                        </div>
+                        {% else %}
+                        <div class="alert alert-success alter-dismissable fade show text-center" role="alert">
+                          {{ message }}
+                        </div>
+                    {% endif %} {% endfor %} {% endif %} {% endwith %}
+                    <div class="container my-4">
+                        <div class="row justify-content-center">
+                            <div class="text-center">
+                                <img src="/static/photos/forecasting_icon.png" alt="forecasting_icon" width="100" height="100" class="img-responsive">
+                                <p class="lead">Forecasting Models</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container my-4">
+                        <!-- Pills navs -->
+                        <ul class="nav nav-pills nav-justified mb-3" role="tablist">
+                          <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="tab-login" data-toggle="pill" href="#pills-login" role="tab"
+                             aria-controls="pills-login" aria-selected="true">Login</a>
+                          </li>
+                          <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="tab-register" data-toggle="pill" href="#pills-register" role="tab"
+                              aria-controls="pills-register" aria-selected="false">Register</a>
+                          </li>
+                        </ul>
+                        <!-- Pills navs -->
+                        
+                        <!-- Pills content -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                            <form method="POST">
+                                <!-- Username input -->
+                                <div class="form-outline mt-4 mb-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="text" class="form-control" id="loginUsername" name="loginUsername" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                                    </div>
+                                </div>
+                        
+                                <!-- Password input -->
+                                <div class="form-outline mb-4 mt-3">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="password" id="loginPassword" name="loginPassword" class="form-control" placeholder="Password" />
+                                    </div>
+                                </div>
+                        
+                                <!-- Submit button -->
+                                <button type="submit" class="col-12 btn btn-primary btn-block mt-3 mb-4" style="color: white;">Log in</button>
+                            </form>
+                            </div>
+                
+                            <div class="tab-pane fade show" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                            <form method="POST">
+                                <!-- Username input -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="text" id="registerUsername" name="registerUsername" class="form-control" placeholder="Username" />
+                                    </div>
+                                </div>
+                        
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="email" id="registerEmail" name="registerEmail" class="form-control" placeholder="Email" />
+                                    </div>
+                                </div>
+                        
+                                <!-- Password input -->
+                                <div class="form-outline mb-4 mt-3">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="password" id="registerPassword" name="registerPassword" class="form-control" placeholder="Password" />
+                                    </div>
+                                </div>
+                        
+                                <!-- Confirm Password input -->
+                                <div class="form-outline mb-4 mt-3">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                              <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                                            </svg>
+                                        </span>
+                                        <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" class="form-control" placeholder="Confirm password"/>
+                                    </div>
+                                </div>
+                
+                                <!-- Submit button -->
+                                <button name="register" type="submit" class="col-12 btn btn-primary btn-block mt-3 mb-3" style="color: white;">Sign up</button>
+                            </form>
+                            </div>
+                        </div>
+                        <!-- Pills content -->
+                    </div>
+                </div>
+                <div class="col-sm-6 px-0 d-none d-sm-block"> <!-- d-none d-sm-block == hide on screens smaller than sm -->
+                    <img src="/static/photos/marina.jpg" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

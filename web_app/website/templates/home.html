@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/main.min.css" rel="stylesheet">
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="/static/main.js"></script>
+    <title>Home</title>
+</head>
+<body class="bg-primary">
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-end">
+              <form method="POST">
+                <button type="submit" class="btn btn-outline-light btn-sm text-end">Log out</button>
+              </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="card">
+                    <div class="card-body">
+                      <form method="POST" enctype=multipart/form-data>
+                        <div>
+                          <input class="form-control" id="formFileLg" name="csv" id="csv" type="file" accept=".csv">
+                        </div>
+                      </form>
+                      <p class="lead mt-3">UPLOAD DATA FILE (.csv)</p>
+                      <hr>
+                      <div class="container h-100">
+                        <canvas id="myChart" height="170vh"></canvas>
+                      </div>
+                      <button id="btn" type="submit" class="btn btn-outline-primary mt-3" name="predict" style="visibility: hidden;">Predict!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/chart.min.js"></script>
+
+    <script>
+
+        let zeroData = new Array(20).fill(0);
+        let emptyData = []
+        let chartLabels = ["Day1", "Day2", "Day3", "Day4", "Day5", "Day6", "Day7","Day8", "Day9", "Day10",
+        "Day11", "Day12", "Day13", "Day14","Day15", "Day16", "Day17", "Day18", "Day19", "Day20"]
+
+        let myData = {
+          labels: chartLabels,
+          datasets: [{
+            label: '',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: zeroData,
+          },
+          {
+            label: '',
+            backgroundColor: '#3e95cd',
+            borderColor: '#3e95cd',
+            data: emptyData,
+          },
+          {
+            label: '',
+            backgroundColor: '#8e5ea2',
+            borderColor: '#8e5ea2',
+            data: emptyData,
+          },
+          {
+            label: '',
+            backgroundColor: '#3cba9f',
+            borderColor: '#3cba9f',
+            data: emptyData,
+          },
+          {
+            label: '',
+            backgroundColor: '#e8c3b9',
+            borderColor: '#e8c3b9',
+            data: emptyData,
+          },
+          {
+            label: '',
+            backgroundColor: '#c45850',
+            borderColor: '#c45850',
+            data: emptyData,
+          }]
+        };
+      
+        const config = {
+          type: 'line',
+          data: myData,
+          options: {}
+        };
+    </script>
+
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+</body>
+</html>

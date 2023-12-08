@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-icons": "^1.9.1",
+    "chart.js": "^3.9.1"
+  }
+}
